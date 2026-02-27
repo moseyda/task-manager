@@ -34,10 +34,11 @@ export function Sidebar() {
     const { sidebarOpen } = useUIStore();
     const { user } = useAuth();
 
-    if (!sidebarOpen) return null;
-
     return (
-        <div className="flex h-full w-64 flex-col bg-card border-r shadow-sm transition-all duration-300">
+        <div className={cn(
+            "flex h-full flex-col bg-card shadow-sm transition-all duration-300 overflow-hidden",
+            sidebarOpen ? "w-64 border-r" : "w-0 border-r-0"
+        )}>
             <div className="flex h-14 items-center border-b px-4">
                 <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
                     <CheckSquare className="h-6 w-6 text-primary" />
