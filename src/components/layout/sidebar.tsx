@@ -16,6 +16,12 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 const routes = [
     {
         label: "Dashboard",
@@ -55,47 +61,63 @@ export function Sidebar() {
                             ? pathname === '/'
                             : pathname.startsWith(route.href);
                         return (
-                            <Link
-                                key={route.href}
-                                href={route.href}
-                                className={cn(
-                                    "flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                                    isActive
-                                        ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                                    sidebarOpen ? "gap-3" : "justify-center px-0 py-3"
+                            <Tooltip key={route.href} delayDuration={0}>
+                                <TooltipTrigger asChild>
+                                    <Link
+                                        href={route.href}
+                                        className={cn(
+                                            "flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                                            isActive
+                                                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                                                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                                            sidebarOpen ? "gap-3" : "justify-center px-0 py-3"
+                                        )}
+                                    >
+                                        <route.icon className="h-5 w-5 shrink-0" />
+                                        <span className={cn(
+                                            "transition-all duration-300 whitespace-nowrap",
+                                            !sidebarOpen && "opacity-0 w-0 hidden"
+                                        )}>
+                                            {route.label}
+                                        </span>
+                                    </Link>
+                                </TooltipTrigger>
+                                {!sidebarOpen && (
+                                    <TooltipContent side="right" className="text-chart-3 font-semibold">
+                                        {route.label}
+                                    </TooltipContent>
                                 )}
-                                title={!sidebarOpen ? route.label : undefined}
-                            >
-                                <route.icon className="h-5 w-5 shrink-0" />
-                                <span className={cn(
-                                    "transition-all duration-300 whitespace-nowrap",
-                                    !sidebarOpen && "opacity-0 w-0 hidden"
-                                )}>
-                                    {route.label}
-                                </span>
-                            </Link>
+                            </Tooltip>
                         );
                     })}
                 </nav>
 
                 <div className="px-2 mt-auto">
                     <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <button className={cn(
-                                "flex w-full items-center rounded-lg py-2 text-sm font-medium transition-colors hover:bg-muted border cursor-pointer",
-                                sidebarOpen ? "px-3 gap-3 justify-start" : "justify-center px-0 py-3"
-                            )}>
-                                <UserCircle className="h-5 w-5 text-muted-foreground shrink-0" />
-                                <div className={cn(
-                                    "flex-1 overflow-hidden transition-all duration-300 text-left",
-                                    !sidebarOpen && "opacity-0 w-0 hidden"
-                                )}>
-                                    <p className="truncate font-semibold text-sm leading-tight">{user?.name || "My Account"}</p>
-                                </div>
-                                {sidebarOpen && <ChevronsUpDown className="h-4 w-4 text-muted-foreground shrink-0" />}
-                            </button>
-                        </DropdownMenuTrigger>
+                        <Tooltip delayDuration={0}>
+                            <TooltipTrigger asChild>
+                                <DropdownMenuTrigger asChild>
+                                    <button className={cn(
+                                        "flex w-full items-center rounded-lg py-2 text-sm font-medium transition-colors hover:bg-muted border cursor-pointer",
+                                        sidebarOpen ? "px-3 gap-3 justify-start" : "justify-center px-0 py-3"
+                                    )}>
+                                        <UserCircle className="h-5 w-5 text-muted-foreground shrink-0" />
+                                        <div className={cn(
+                                            "flex-1 overflow-hidden transition-all duration-300 text-left",
+                                            !sidebarOpen && "opacity-0 w-0 hidden"
+                                        )}>
+                                            <p className="truncate font-semibold text-sm leading-tight">{user?.name || "My Account"}</p>
+                                        </div>
+                                        {sidebarOpen && <ChevronsUpDown className="h-4 w-4 text-muted-foreground shrink-0" />}
+                                    </button>
+                                </DropdownMenuTrigger>
+                            </TooltipTrigger>
+                            {!sidebarOpen && (
+                                <TooltipContent side="right" className="text-chart-3 font-semibold">
+                                    Profile & Settings
+                                </TooltipContent>
+                            )}
+                        </Tooltip>
                         <DropdownMenuContent align={sidebarOpen ? "start" : "center"} side={sidebarOpen ? "bottom" : "right"} className="w-[240px]">
                             <DropdownMenuLabel className="font-normal">
                                 <div className="flex flex-col space-y-1">
