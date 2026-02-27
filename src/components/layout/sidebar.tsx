@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CheckSquare, LayoutDashboard, Settings as SettingsIcon, LogOut, UserCircle, ChevronsUpDown } from "lucide-react";
+import { CheckSquare, LayoutDashboard, Settings as SettingsIcon, LogOut, UserCircle, ChevronsUpDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useUIStore } from "@/store/use-ui-store";
 import { useAuth } from "@/hooks/use-auth";
@@ -37,15 +37,27 @@ const routes = [
 
 export function Sidebar() {
     const pathname = usePathname();
-    const { sidebarOpen } = useUIStore();
+    const { sidebarOpen, toggleSidebar } = useUIStore();
     const { user } = useAuth();
 
     return (
         <div className={cn(
-            "flex h-full flex-col bg-card shadow-sm transition-all duration-300 overflow-hidden border-r shrink-0",
+            "flex h-full flex-col bg-card shadow-sm transition-all duration-300 border-r shrink-0 group relative z-20",
             sidebarOpen ? "w-64" : "w-[68px]"
         )}>
-            <div className="flex h-14 items-center border-b px-4 justify-center">
+            {/* Edge Toggle Button */}
+            <button
+                onClick={toggleSidebar}
+                className="absolute -right-0 top-1/2 -translate-y-1/2 flex h-16 w-5 items-center justify-center rounded-l-full rounded-r-none border border-l-1 border-chart-3/40 hover:border-chart-3/80 transition-all duration-50 bg-card shadow-sm z-50 cursor-pointer text-chart-3/40 hover:text-chart-3/80 overflow-hidden"
+            >
+                {sidebarOpen ? (
+                    <ChevronLeft className="h-4 w-4 shrink-0" />
+                ) : (
+                    <ChevronRight className="h-4 w-4 shrink-0" />
+                )}
+            </button>
+
+            <div className="flex h-14 items-center border-b px-4 justify-center overflow-hidden">
                 <Link href="/dashboard" className="flex items-center gap-2 font-semibold justify-center">
                     <CheckSquare className="h-6 w-6 text-chart-3 shrink-0" />
                     <span className={cn(
