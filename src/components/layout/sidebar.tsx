@@ -36,13 +36,16 @@ export function Sidebar() {
 
     return (
         <div className={cn(
-            "flex h-full flex-col bg-card shadow-sm transition-all duration-300 overflow-hidden",
-            sidebarOpen ? "w-64 border-r" : "w-0 border-r-0"
+            "flex h-full flex-col bg-card shadow-sm transition-all duration-300 overflow-hidden border-r shrink-0",
+            sidebarOpen ? "w-64" : "w-[68px]"
         )}>
-            <div className="flex h-14 items-center border-b px-4">
-                <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
-                    <CheckSquare className="h-6 w-6 text-primary" />
-                    <span className="text-lg">TaskMaster Pro</span>
+            <div className="flex h-14 items-center border-b px-4 justify-center">
+                <Link href="/dashboard" className="flex items-center gap-2 font-semibold justify-center">
+                    <CheckSquare className="h-6 w-6 text-chart-3 shrink-0" />
+                    <span className={cn(
+                        "text-lg  transition-all duration-300 whitespace-nowrap",
+                        !sidebarOpen && "opacity-0 w-0 hidden"
+                    )}>TaskMaster Pro</span>
                 </Link>
             </div>
             <div className="flex-1 overflow-auto py-4 flex flex-col justify-between">
@@ -56,14 +59,21 @@ export function Sidebar() {
                                 key={route.href}
                                 href={route.href}
                                 className={cn(
-                                    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                                    "flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                                     isActive
                                         ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                                        : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                                    sidebarOpen ? "gap-3" : "justify-center px-0 py-3"
                                 )}
+                                title={!sidebarOpen ? route.label : undefined}
                             >
-                                <route.icon className="h-4 w-4" />
-                                {route.label}
+                                <route.icon className="h-5 w-5 shrink-0" />
+                                <span className={cn(
+                                    "transition-all duration-300 whitespace-nowrap",
+                                    !sidebarOpen && "opacity-0 w-0 hidden"
+                                )}>
+                                    {route.label}
+                                </span>
                             </Link>
                         );
                     })}
@@ -72,18 +82,24 @@ export function Sidebar() {
                 <div className="px-2 mt-auto">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-muted text-left border cursor-pointer">
-                                <UserCircle className="h-5 w-5 text-muted-foreground" />
-                                <div className="flex-1 overflow-hidden">
+                            <button className={cn(
+                                "flex w-full items-center rounded-lg py-2 text-sm font-medium transition-colors hover:bg-muted border cursor-pointer",
+                                sidebarOpen ? "px-3 gap-3 justify-start" : "justify-center px-0 py-3"
+                            )}>
+                                <UserCircle className="h-5 w-5 text-muted-foreground shrink-0" />
+                                <div className={cn(
+                                    "flex-1 overflow-hidden transition-all duration-300 text-left",
+                                    !sidebarOpen && "opacity-0 w-0 hidden"
+                                )}>
                                     <p className="truncate font-semibold text-sm leading-tight">{user?.name || "My Account"}</p>
                                 </div>
-                                <ChevronsUpDown className="h-4 w-4 text-muted-foreground" />
+                                {sidebarOpen && <ChevronsUpDown className="h-4 w-4 text-muted-foreground shrink-0" />}
                             </button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start" className="w-[240px]">
+                        <DropdownMenuContent align={sidebarOpen ? "start" : "center"} side={sidebarOpen ? "bottom" : "right"} className="w-[240px]">
                             <DropdownMenuLabel className="font-normal">
                                 <div className="flex flex-col space-y-1">
-                                    <p className="text-sm font-medium leading-none">{user?.name}</p>
+                                    <p className="text-sm text-chart-3 font-medium leading-none">{user?.name}</p>
                                     <p className="text-xs leading-none text-muted-foreground">
                                         {user?.email}
                                     </p>
