@@ -1,10 +1,22 @@
 import { Sidebar } from "@/components/layout/sidebar";
+import { getUser } from "@/lib/auth-actions";
+import { redirect } from "next/navigation";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const user = await getUser();
+
+    if (!user) {
+        redirect("/login");
+    }
+
+    if (!user.emailVerification) {
+        redirect("/verify-email");
+    }
+
     return (
         <div className="flex h-screen overflow-hidden bg-background">
             <Sidebar />

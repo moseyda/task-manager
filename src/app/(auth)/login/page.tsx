@@ -48,7 +48,16 @@ export default function LoginPage() {
             } else {
                 toast.success("Logged in successfully");
                 queryClient.invalidateQueries({ queryKey: ["user"] });
-                router.push("/");
+
+                // Check for a callback URL to redirect back to verification
+                const params = new URLSearchParams(window.location.search);
+                const callbackUrl = params.get("callback");
+
+                if (callbackUrl && callbackUrl.startsWith("/")) {
+                    router.push(callbackUrl);
+                } else {
+                    router.push("/");
+                }
             }
         });
     }

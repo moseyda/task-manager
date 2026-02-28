@@ -1,7 +1,8 @@
 "use server";
 
-import { ID } from "node-appwrite";
+import { ID, Client, Account } from "node-appwrite";
 import { createAdminClient, createSessionClient } from "./appwrite.server";
+import { appwriteConfig } from "./appwrite.config";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -52,9 +53,38 @@ export async function signUpWithEmail(formData: FormData) {
             maxAge: 60 * 60 * 24 * 30,
         });
 
+        // Trigger the verification email
+        const { account: sessionAccount } = await createSessionClient();
+        const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+        await sessionAccount.createVerification(`${appUrl}/verify-email`);
+
         return { success: true };
     } catch (error: any) {
         return { error: error.message || "Failed to sign up" };
+    }
+}
+
+export async function sendVerificationEmail() {
+    try {
+        const { account } = await createSessionClient();
+        const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+        await account.createVerification(`${appUrl}/verify-email`);
+        return { success: true };
+    } catch (error: any) {
+        return { error: error.message || "Failed to send verification email" };
+    }
+}
+
+export async function verifyEmail(userId: string, secret: string) {
+    if (!userId || !secret) return { error: "Missing required parameters" };
+
+    try {
+        const { account } = await createSessionClient();
+        const result = await account.updateVerification(userId, secret);
+        return { success: true };
+    } catch (error: any) {
+        console.error("Verification failed:", error);
+        return { error: error.message || "Failed to verify email" };
     }
 }
 
