@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ArrowRight, Zap, Target, Shield, Clock } from "lucide-react";
+import { CheckCircle2, MoveRight, Zap, Target, Shield, Clock } from "lucide-react";
 
 export default function LandingPage() {
     return (
@@ -21,15 +21,23 @@ export default function LandingPage() {
                     <p className="max-w-2xl text-xl text-muted-foreground mb-10 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-150">
                         The intelligent task management platform that transforms chaos into coordinated action. Built for high-velocity teams and relentless individuals.
                     </p>
-
                     <div className="flex flex-col sm:flex-row gap-4 items-center animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
                         <Link href="/register">
-                            <Button size="lg" className="rounded-full h-14 px-8 text-base shadow-xl">
-                                Start for free <ArrowRight className="ml-2 h-5 w-5" />
+                            <Button
+                                size="lg"
+                                className="group rounded-full h-14 px-8 text-base shadow-xl w-full sm:w-56 rounded-full h-14 px-8 text-base cursor-pointer"
+                            >
+                                Start for free
+                                <MoveRight className="relative top-[1px] !h-5 !w-5 transition-transform duration-200 group-hover:translate-x-1" />
                             </Button>
                         </Link>
+
                         <Link href="#features">
-                            <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-base bg-background/50 backdrop-blur">
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="rounded-full h-14 px-8 text-base bg-background/50 backdrop-blur w-full sm:w-56 rounded-full h-14 px-8 text-base cursor-pointer"
+                            >
                                 Discover Features
                             </Button>
                         </Link>
