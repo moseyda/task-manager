@@ -105,7 +105,7 @@ export default async function DashboardIndex() {
                                 ))}
                             </div>
                         )}
-                        <Button asChild variant="ghost" className="w-full mt-4">
+                        <Button asChild variant="ghost" className="w-full mt-4 text-chart-3 hover:text-chart-3/85">
                             <Link href="/tasks">
                                 View all tasks <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>

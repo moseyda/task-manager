@@ -46,7 +46,7 @@ export function TaskCard({ task, onUpdate, onDelete, onEdit }: TaskCardProps) {
 
     return (
         <Card className={`relative transition-all hover:shadow-md ${task.completed ? "opacity-75 bg-muted/50" : ""}`}>
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-3 text-chart-3">
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-3">
                         <Checkbox
@@ -80,7 +80,7 @@ export function TaskCard({ task, onUpdate, onDelete, onEdit }: TaskCardProps) {
             </CardContent>
             <CardFooter className="pt-0 flex justify-end gap-2">
                 <Button variant="ghost" size="icon" onClick={() => onEdit(task)}>
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-4 w-4 text-chart-3" />
                 </Button>
                 <Button variant="ghost" size="icon" className="text-destructive hover:bg-destructive/10 hover:text-destructive" onClick={() => onDelete(task.$id)}>
                     <Trash className="h-4 w-4" />
