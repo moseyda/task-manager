@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CheckSquare, LayoutDashboard, Settings as SettingsIcon, LogOut, UserCircle, ChevronsUpDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckSquare, LayoutDashboard, Settings as SettingsIcon, LogOut, UserCircle, ChevronsUpDown, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useUIStore } from "@/store/use-ui-store";
 import { useAuth } from "@/hooks/use-auth";
@@ -56,14 +56,21 @@ export function Sidebar() {
                     <ChevronRight className="h-4 w-4 shrink-0" />
                 )}
             </button>
-
             <div className="flex h-14 items-center border-b px-4 justify-center overflow-hidden">
                 <Link href="/dashboard" className="flex items-center gap-2 font-semibold justify-center">
-                    <CheckSquare className="h-6 w-6 text-chart-3 shrink-0" />
-                    <span className={cn(
-                        "text-lg  transition-all duration-300 whitespace-nowrap",
-                        !sidebarOpen && "opacity-0 w-0 hidden"
-                    )}>TaskMaster Pro</span>
+
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-chart-3 shrink-0">
+                        <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
+                    </div>
+
+                    <span
+                        className={cn(
+                            "text-lg transition-all duration-300 whitespace-nowrap",
+                            !sidebarOpen && "opacity-0 w-0 hidden"
+                        )}
+                    >
+                        TaskMaster Pro
+                    </span>
                 </Link>
             </div>
             <div className="flex-1 overflow-auto py-4 flex flex-col justify-between">

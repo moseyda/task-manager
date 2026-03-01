@@ -6,19 +6,19 @@ export function proxy(request: NextRequest) {
 
     const p = request.nextUrl.pathname;
     const isAuthPage = p.startsWith('/login') || p.startsWith('/register');
-    const isProtected = p.startsWith('/tasks') || p.startsWith('/settings') || p === '/';
+    const isProtected = p.startsWith('/tasks') || p.startsWith('/settings') || p.startsWith('/dashboard');
 
     if (!session && isProtected) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
     if (session && isAuthPage) {
-        return NextResponse.redirect(new URL('/', request.url));
+        return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/', '/tasks/:path*', '/settings/:path*', '/verify-email', '/login', '/register'],
+    matcher: ['/', '/dashboard/:path*', '/tasks/:path*', '/settings/:path*', '/verify-email', '/login', '/register'],
 };

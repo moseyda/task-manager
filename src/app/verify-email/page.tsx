@@ -29,7 +29,7 @@ export default async function VerifyEmailPage(props: {
 
     // Prevent verified users from being stuck on this page
     if (user.emailVerification) {
-        redirect("/");
+        redirect("/dashboard");
     }
 
     // If they have no URL params, show the generic "Check your email" prompt

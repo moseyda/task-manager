@@ -56,7 +56,7 @@ export default function LoginPage() {
                 if (callbackUrl && callbackUrl.startsWith("/")) {
                     router.push(callbackUrl);
                 } else {
-                    router.push("/");
+                    router.push("/dashboard");
                 }
             }
         });

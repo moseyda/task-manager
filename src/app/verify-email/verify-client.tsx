@@ -31,7 +31,7 @@ export function VerifyEmailClient({ email, error, userId, secret }: { email?: st
                 toast.error(res.error);
             } else {
                 toast.success("Email verified successfully!");
-                router.push("/?verified=true");
+                router.push("/dashboard?verified=true");
             }
         });
     };

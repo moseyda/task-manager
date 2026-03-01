@@ -43,7 +43,7 @@ export default function RegisterPage() {
             } else {
                 toast.success("Account created successfully");
                 queryClient.invalidateQueries({ queryKey: ["user"] });
-                router.push("/");
+                router.push("/dashboard");
             }
         });
     }
