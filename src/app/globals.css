@@ -120,7 +120,12 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  ::selection {
+    background-color: oklch(76.9% 0.17337 64.355 / 0.6);
   }
 }

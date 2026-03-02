@@ -8,7 +8,7 @@ export function Footer() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-5">
                     <div className="lg:col-span-2">
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-chart-3">
                                 <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
                             </div>
                             <span className="font-bold tracking-tight text-xl">TaskFlow</span>
