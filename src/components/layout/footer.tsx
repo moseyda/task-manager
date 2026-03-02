@@ -11,7 +11,7 @@ export function Footer() {
                             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-chart-3">
                                 <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
                             </div>
-                            <span className="font-bold tracking-tight text-xl">TaskFlow</span>
+                            <span className="font-bold tracking-tight text-xl">TaskoraFlow</span>
                         </div>
                         <p className="max-w-xs text-sm text-muted-foreground mb-6">
                             The ultimate task management platform designed to orchestrate your workflow with perfect clarity and unstoppable momentum.
@@ -54,7 +54,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-                    <p>© {new Date().getFullYear()} TaskFlow Inc. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} TaskoraFlow Inc. All rights reserved.</p>
                     <div className="flex items-center gap-4">
                         <span>Crafted with passion.</span>
                     </div>

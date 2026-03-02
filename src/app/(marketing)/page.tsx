@@ -11,7 +11,7 @@ export default function LandingPage() {
                 <div className="container mx-auto max-w-7xl px-4 md:px-8 flex flex-col items-center text-center">
                     <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
-                        TaskFlow is now in public beta
+                        TaskoraFlow is now in public beta
                     </div>
 
                     <h1 className="max-w-4xl text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl mb-6 animate-in fade-in slide-in-from-bottom-8 duration-700">

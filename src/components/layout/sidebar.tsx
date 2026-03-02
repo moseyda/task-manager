@@ -69,7 +69,7 @@ export function Sidebar() {
                             !sidebarOpen && "opacity-0 w-0 hidden"
                         )}
                     >
-                        TaskMaster Pro
+                        TaskoraFlow
                     </span>
                 </Link>
             </div>

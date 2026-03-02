@@ -13,7 +13,7 @@ export function LandingNavbar() {
                         <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
                     </div>
                     <Link href="/" className="font-bold tracking-tight text-xl flex items-center gap-2">
-                        TaskFlow
+                        TaskoraFlow
                     </Link>
                 </div>
 

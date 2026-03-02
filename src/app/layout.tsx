@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TaskMaster Pro",
+  title: "TaskoraFlow",
   description: "Modern production-ready task management dashboard",
 };
 
