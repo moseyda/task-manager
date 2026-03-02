@@ -14,7 +14,7 @@ export function Footer() {
                             <span className="font-bold tracking-tight text-xl">TaskoraFlow</span>
                         </div>
                         <p className="max-w-xs text-sm text-muted-foreground mb-6">
-                            The ultimate task management platform designed to orchestrate your workflow with perfect clarity and unstoppable momentum.
+                            Turn chaos into clarity.
                         </p>
                         <div className="flex gap-4">
                             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors"><Twitter className="h-5 w-5" /></a>

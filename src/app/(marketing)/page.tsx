@@ -19,7 +19,7 @@ export default function LandingPage() {
                     </h1>
 
                     <p className="max-w-2xl text-xl text-muted-foreground mb-10 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-150">
-                        The intelligent task management platform that transforms chaos into coordinated action. Built for high-velocity teams and relentless individuals.
+                        Decide what matters. Plan clearly. Execute effortlessly.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 items-center animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
                         <Link href="/register">
