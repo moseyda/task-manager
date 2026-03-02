@@ -25,10 +25,10 @@ export function LandingNavbar() {
 
                 <div className="flex items-center gap-4">
                     <Link href="/login">
-                        <Button variant="ghost" className="hidden sm:flex">Log in</Button>
+                        <Button variant="ghost" className="hidden sm:flex cursor-pointer">Log in</Button>
                     </Link>
                     <Link href="/register">
-                        <Button className="rounded-full shadow-sm bg-chart-3 hover:bg-chart-3/85">Get Started</Button>
+                        <Button className="rounded-full shadow-sm bg-chart-3 hover:bg-chart-3/85 cursor-pointer">Get Started</Button>
                     </Link>
                 </div>
             </div>

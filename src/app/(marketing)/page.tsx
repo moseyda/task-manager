@@ -105,7 +105,7 @@ export default function LandingPage() {
                         Join thousands of users who have already revolutionized their daily workflow. Setup takes less than 60 seconds.
                     </p>
                     <Link href="/register">
-                        <Button size="lg" variant="secondary" className="rounded-full h-14 px-10 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform">
+                        <Button size="lg" variant="secondary" className="rounded-full h-14 px-10 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform cursor-pointer">
                             Create your free account
                         </Button>
                     </Link>
